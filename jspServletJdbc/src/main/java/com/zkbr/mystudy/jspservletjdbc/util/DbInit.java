@@ -19,9 +19,9 @@ public class DbInit {
 						"PRIMARY KEY (`id`)" +
 						") ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;");
 				statement.executeUpdate("INSERT INTO `structure` (`id`, `cname`) VALUES " +
-						"(1, '������ ��� �����'), " +
-						"(2, '��������������� ������'), " +
-						"(3, '������ ��� ������');");
+						"(1, '这是1111'), " +
+						"(2, '这是1122'), " +
+						"(3, '这是1155');");
 				
 				statement.executeUpdate("CREATE TABLE IF NOT EXISTS `housing` (" +
 						"`id` int(10) NOT NULL AUTO_INCREMENT, " +
@@ -37,10 +37,10 @@ public class DbInit {
 				statement.executeUpdate("INSERT INTO `housing` (`id`, `sid`, `number`, `quantity`, " +
 						"`recreation`, `procedures`) VALUES " +
 						"(1, 1, 1, 30, NULL, NULL), " +
-						"(2, 3, 0, 0, '������; �������', NULL), " +
-						"(3, 3, 0, 0, '�������; ���������� ������; �����', NULL), " +
-						"(4, 2, 0, 0, NULL, '������������; ��� ��������; " +
-						"��������������; ������ ������; ����� �������������');");
+						"(2, 3, 0, 0, '3333', NULL), " +
+						"(3, 3, 0, 0, '纯纯粹粹', NULL), " +
+						"(4, 2, 0, 0, NULL, '22223; " +
+						"4444');");
 				
 				statement.executeUpdate("CREATE TABLE `users` ("
 						+ "`userid` INT(10) NOT NULL AUTO_INCREMENT, "

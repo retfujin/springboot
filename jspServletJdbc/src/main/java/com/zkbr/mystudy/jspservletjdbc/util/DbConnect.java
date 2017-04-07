@@ -11,7 +11,7 @@ public class DbConnect {
 			return connection;
 		} else {
 			try {
-				String url = "jdbc:mysql://localhost/sanatoriumdb";
+				String url = "jdbc:mysql://localhost/sanatoriumdb?characterEncoding=GBK";
 				String user = "root";
 				String password = "Passw0rd";
 				String driver = "org.gjt.mm.mysql.Driver";

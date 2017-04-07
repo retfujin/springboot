@@ -27,7 +27,7 @@ public class UserSanatoriumController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String action = request.getParameter("action");
-		request.setAttribute("title", "��������� ���������");
+		request.setAttribute("title", "这个是一个例子");
 		request.setAttribute("content", CONTENT);
 		request.setAttribute("sanatorium", sanatoriumDao.getAllHousing());
 		
@@ -35,12 +35,12 @@ public class UserSanatoriumController extends HttpServlet {
 			if (action.equalsIgnoreCase("srp")) {
 				int housingId = Integer.parseInt(request.getParameter("id"));
 				request.setAttribute("content", "/details.jsp");
-				request.setAttribute("title", "���������� � �������");
+				request.setAttribute("title", "这个是一个例子");
 				request.setAttribute("discription", sanatoriumDao.getDescriptionByHousingId(housingId));
 			} else if(action.equalsIgnoreCase("sn")) {
 				int number = Integer.parseInt(request.getParameter("number"));
 				request.setAttribute("content", "/details.jsp");
-				request.setAttribute("title", "���������� � ����� ������� �" + number);
+				request.setAttribute("title", "这个是一个例子" + number);
 				request.setAttribute("discription", sanatoriumDao.getQuantityByNumber(number));
 			} else {}
 		}

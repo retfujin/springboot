@@ -22,9 +22,9 @@ public class SanatoriumDao {
 	
 	public List<Sanatorium> getAllHousing() {
 		List<Sanatorium> sanatorium = new ArrayList<Sanatorium>();
-		sql = "SELECT h.`id`, s.`cname`, h.`number`, h.`quantity`, h.`recreation`, h.`procedures` " +
-				"FROM `housing` h, `structure` s " +
-				"WHERE h.`sid` = s.`id`;";
+		sql = "SELECT h.id, s.cname, h.number, h.quantity, h.recreation, h.procedures " +
+				"FROM housing h, structure s " +
+				"WHERE h.sid = s.id;";
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(sql);
@@ -48,7 +48,7 @@ public class SanatoriumDao {
 	
 	public List<Sanatorium> getStructure() {
 		List<Sanatorium> sanatorium = new ArrayList<Sanatorium>();
-		sql = "SELECT * FROM `structure`";
+		sql = "SELECT * FROM structure";
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(sql);
@@ -68,9 +68,9 @@ public class SanatoriumDao {
 	
 	public Sanatorium getDescriptionByHousingId(int housingId) {
 		Sanatorium housing = new Sanatorium();
-		sql = "SELECT s.`cname`, h.`number`, h.`quantity`, h.`recreation`, h.`procedures` " +
-				"FROM `housing` h, `structure` s " +
-				"WHERE s.`id` = h.`sid` AND h.`id` = ?;";
+		sql = "SELECT s.cname, h.number, h.quantity, h.recreation, h.procedures " +
+				"FROM housing h, structure s " +
+				"WHERE s.id = h.sid AND h.id = ?;";
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, housingId);
@@ -91,9 +91,9 @@ public class SanatoriumDao {
 	
 	public Sanatorium getQuantityByNumber(int number) {
 		Sanatorium housing = new Sanatorium();
-		sql = "SELECT s.`cname`, h.`number`, h.`quantity` " +
-				"FROM `housing` h, `structure` s " +
-				"WHERE s.`id` = h.`sid` AND h.`number` = ?;";
+		sql = "SELECT s.cname, h.number, h.quantity " +
+				"FROM housing h, structure s " +
+				"WHERE s.id = h.sid AND h.number = ?;";
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, number);
@@ -111,7 +111,7 @@ public class SanatoriumDao {
 	}
 	
 	public int addCorps(Sanatorium structure) {
-		sql = "INSERT INTO `structure` (`cname`) " +
+		sql = "INSERT INTO structure (cname) " +
 				"VALUES (?);";
 		int housingId = 0;
 		
@@ -134,7 +134,7 @@ public class SanatoriumDao {
 	}
 	
 	public void addDiscription(Sanatorium housing) {
-		sql = "INSERT INTO `housing` (`sid`, `number`, `quantity`, `recreation`, `procedures`) " +
+		sql = "INSERT INTO housing (sid, number, quantity, recreation, procedures) " +
 				"VALUES (?, ?, ?, ?, ?);";
 		try {
 			PreparedStatement preparedStatement = connection

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/manager") //��������
+@WebServlet("/manager") 
 public class AdminSanatoriumController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String MAIN_JSP = "/main.jsp";
@@ -27,13 +27,13 @@ public class AdminSanatoriumController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		request.setAttribute("title", "���������������� ������: �������");
+		request.setAttribute("title", "这个是一个例子");
 		request.setAttribute("content", CONTENT);
 		request.setAttribute("sanatorium", sanatoriumDao.getAllHousing());
 		
 		if(null != action) {
 			if(action.equalsIgnoreCase("add")) {
-				request.setAttribute("title", "�������� ������");
+				request.setAttribute("title", "这个是一个例子");
 				request.setAttribute("content", "/add.jsp");
 				request.setAttribute("structure", sanatoriumDao.getStructure());
 			}

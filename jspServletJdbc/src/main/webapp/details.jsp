@@ -14,16 +14,16 @@ Sanatorium housing = (Sanatorium) request.getAttribute("discription");
 </div>
 <br />
 <dl class="dl-horizontal">
-	<dt>Название</dt>
+	<dt>名称</dt>
 	<dd><%=housing.getCorpsName() %></dd>
 	<%if(housing.getQuantity()!=0) {%>
-	<dt>Кол-во мест</dt>
+	<dt>议席的数目</dt>
 	<dd><%=housing.getQuantity()%></dd>
 	<%} else if(housing.getRecreation() != null) {%>
-	<dt>Услуги для отдыха</dt>
+	<dt>娱乐设施</dt>
 	<dd><%=housing.getRecreation()%></dd>
 	<%} else if(housing.getProcedures() != null) {%>
-	<dt>Виды процедур</dt>
+	<dt>程序</dt>
 	<dd><%=housing.getProcedures()%></dd>
 	<%} %>
 </dl>

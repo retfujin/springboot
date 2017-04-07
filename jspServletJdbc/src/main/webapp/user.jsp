@@ -21,8 +21,8 @@ String title = (String)request.getAttribute("title");
 	<thead>
 		<tr>
 			<th>#</th>
-			<th>Название корпуса</th>
-			<th>Номер корпуса</th>
+			<th>Shell 的名称</th>
+			<th>底盘号码</th>
 		</tr>
 	</thead>
 	<tbody>

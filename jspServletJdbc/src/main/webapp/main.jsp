@@ -25,14 +25,14 @@ body {padding-top: 60px;}
 	<div class="container">
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
-				<a class="brand" href="<%=request.getContextPath() %>">Санаторий</a>
+				<a class="brand" href="<%=request.getContextPath() %>">疗养院</a>
 				<%
 				User userInfo = (User)request.getSession().getAttribute("userInfo");
 				if(userInfo== null) {
 				%>
-				<p class="navbar-text pull-right">Гость | <a href="<%=request.getContextPath() %>/login">Войти</a></p>
+				<p class="navbar-text pull-right">客人 | <a href="<%=request.getContextPath() %>/login">登录</a></p>
 				<%} else {%>
-				<p class="navbar-text pull-right"><a href="<%=request.getContextPath() %>/manager"><%=userInfo.getUserName() %></a> | <a href="<%=request.getContextPath() %>/logout">Выйти</a></p>
+				<p class="navbar-text pull-right"><a href="<%=request.getContextPath() %>/manager"><%=userInfo.getUserName() %></a> | <a href="<%=request.getContextPath() %>/logout">退出</a></p>
 				<%} %>
 			</div>
 		</div>
@@ -50,9 +50,9 @@ body {padding-top: 60px;}
 
 		$(function() {
 			$.extend($.validator.messages, {
-				required: "Это поле необходимо заполнить.",
-				number: "Пожалуйста, введите число.",
-				digits: "Пожалуйста, вводите только цифры."
+				required: "你必须填写此字段",
+				number: "请输入的号码.",
+				digits: "请只输入数字."
 
 			});
 		    $('#loginForm, #addForm').validate({

@@ -17,7 +17,7 @@ String title = (String)request.getAttribute("title");
 <br />
 <div class="row">
 <div class="span8 offset1">
-<a href="?action=add" class="btn btn-primary btn-large pull-right">Добавить корпус</a>
+<a href="?action=add" class="btn btn-primary btn-large pull-right">添加存储模块</a>
 <br /><br />
 		<%if(sanatorium != null) {
 			for (Sanatorium housing : sanatorium) {%>
@@ -29,23 +29,23 @@ String title = (String)request.getAttribute("title");
 			
 			
 			<% if(housing.getNumber()!=0) {%>
-				<dt>Номер корпуса</dt>
+				<dt>号码</dt>
 				<dd><%=housing.getNumber() %></dd>
 			<%} %>
 			
 			
 			<% if(housing.getQuantity() != 0) {%>
-				<dt>Кол-во мест</dt>
+				<dt>数目</dt>
 				<dd><%=housing.getQuantity() %></dd>
 			<%} %>
 			
 			<% if(housing.getRecreation()!=null) {%>
-				<dt>Услуги для отдыха</dt>
+				<dt>娱乐设施</dt>
 				<dd><%=housing.getRecreation() %></dd>
 			<%} %>
 			
 			<% if(housing.getProcedures()!=null) {%>
-				<dt>Виды процедур</dt>
+				<dt>程序</dt>
 				<dd><%=housing.getProcedures() %></dd>
 			<%} %>
 		</dl>

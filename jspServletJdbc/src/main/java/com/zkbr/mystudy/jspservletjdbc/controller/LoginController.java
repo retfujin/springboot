@@ -26,7 +26,7 @@ public class LoginController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("title", "���� � �����-������");
+		request.setAttribute("title", "登录管理面板");
 		request.setAttribute("content", LOGIN_FORM);
 
 		
@@ -46,7 +46,7 @@ public class LoginController extends HttpServlet {
 			request.getSession().setMaxInactiveInterval(1800);
 			response.sendRedirect(request.getContextPath() + "/manager");
 		} else {
-			request.setAttribute("error", "����� �\\��� ������ �� ���������!");
+			request.setAttribute("error", "用户名或密码错误!");
 			doGet(request, response);
 		}
 	}

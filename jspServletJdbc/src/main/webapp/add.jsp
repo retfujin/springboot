@@ -14,10 +14,10 @@ List<Sanatorium> sanatorium = (ArrayList<Sanatorium>) request.getAttribute("stru
 		
 
 		<div class="control-group">
-			<label class="control-label" for="selectHousingId">Выберите корпус</label>
+			<label class="control-label" for="selectHousingId">选择存储模块</label>
 			<div class="controls">
 				<select name="sid" id="selectHousingId" class="required">
-					<option value="">Выберите корпус</option>
+					<option value="">选择存储模块</option>
 					<%
 
 									for (Sanatorium housing : sanatorium) {
@@ -26,35 +26,35 @@ List<Sanatorium> sanatorium = (ArrayList<Sanatorium>) request.getAttribute("stru
 					<%
 						}
 					%>
-				</select> <a href="#" id="add" class="btn btn-link btn-mini">Новый
-					корпус</a>
+				</select> <a href="#" id="add" class="btn btn-link btn-mini">新增功能
+					机箱</a>
 			</div>
 		</div>
 		<div id="newDiv"></div>
 		
 		<div class="control-group">
-			<label class="control-label" for="inputNumber">Номер</label>
+			<label class="control-label" for="inputNumber">号码</label>
 			<div class="controls">
 				<input type="text" name="number" id="inputNumber" placeholder="" class="digits">
 			</div>
 		</div>
 		
 		<div class="control-group">
-			<label class="control-label" for="inputQuantity">Кол-во мест</label>
+			<label class="control-label" for="inputQuantity">数目</label>
 			<div class="controls">
 				<input type="text" name="quantity" id="inputQuantity" placeholder="" class="digits">
 			</div>
 		</div>
 		
 		<div class="control-group">
-			<label class="control-label" for="inputRecreation">Услуги для отдыха</label>
+			<label class="control-label" for="inputRecreation">娱乐设施</label>
 			<div class="controls">
 				<input type="text" name="recreation" id="inputRecreation" placeholder="">
 			</div>
 		</div>
 		
 		<div class="control-group">
-			<label class="control-label" for="inputProcedures">Виды процедур</label>
+			<label class="control-label" for="inputProcedures">程序</label>
 			<div class="controls">
 				<input type="text" name="procedures" id="inputProcedures" placeholder="">
 			</div>
@@ -62,7 +62,7 @@ List<Sanatorium> sanatorium = (ArrayList<Sanatorium>) request.getAttribute("stru
 
 		<div class="control-group">
 			<div class="controls">
-				<button type="submit" class="btn">Добавить</button>
+				<button type="submit" class="btn">程序</button>
 			</div>
 		</div>
 	</fieldset>
