@@ -13,7 +13,7 @@ public class DbConnect {
 			try {
 				String url = "jdbc:mysql://localhost/sanatoriumdb";
 				String user = "root";
-				String password = "098929";
+				String password = "Passw0rd";
 				String driver = "org.gjt.mm.mysql.Driver";
 				
 				Class.forName(driver);

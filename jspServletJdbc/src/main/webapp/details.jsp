@@ -4,7 +4,7 @@
 	String title = (String) request.getAttribute("title");
 Sanatorium housing = (Sanatorium) request.getAttribute("discription");
 %>
-<%@page import="mypackage.model.Sanatorium"%>
+<%@page import="com.zkbr.mystudy.jspservletjdbc.model.Sanatorium"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <div class="row">

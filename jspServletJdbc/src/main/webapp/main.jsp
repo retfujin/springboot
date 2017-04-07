@@ -1,4 +1,4 @@
-<%@page import="mypackage.model.User"%>
+<%@page import="com.zkbr.mystudy.jspservletjdbc.model.User"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%

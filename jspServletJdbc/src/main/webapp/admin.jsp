@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="mypackage.model.Sanatorium"%>
+<%@page import="com.zkbr.mystudy.jspservletjdbc.model.Sanatorium"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 

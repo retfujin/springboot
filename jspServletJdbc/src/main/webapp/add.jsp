@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="mypackage.model.Sanatorium"%>
+<%@page import="com.zkbr.mystudy.jspservletjdbc.model.Sanatorium"%>
 <%
 	String title = (String) request.getAttribute("title");
 List<Sanatorium> sanatorium = (ArrayList<Sanatorium>) request.getAttribute("structure");
