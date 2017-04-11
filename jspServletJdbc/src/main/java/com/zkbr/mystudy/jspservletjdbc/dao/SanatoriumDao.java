@@ -1,6 +1,6 @@
 package com.zkbr.mystudy.jspservletjdbc.dao;
 
-import com.zkbr.mystudy.jspservletjdbc.model.Sanatorium;
+import com.zkbr.mystudy.jspservletjdbc.model.Product;
 import com.zkbr.mystudy.jspservletjdbc.util.DbConnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,43 +20,43 @@ public class SanatoriumDao {
 		connection = DbConnect.getConnection();
 	}
 	
-	public List<Sanatorium> getAllHousing() {
-		List<Sanatorium> sanatorium = new ArrayList<Sanatorium>();
-		sql = "SELECT h.id, s.cname, h.number, h.quantity, h.recreation, h.procedures " +
-				"FROM housing h, structure s " +
+	public List<Product> getAllHousing() {
+		List<Product> ls = new ArrayList<Product>();
+		sql = "SELECT h.id, s.proTypeName,h.proName, h.number, h.model, h.proRemark" +
+				" FROM housing h, structure s " +
 				"WHERE h.sid = s.id;";
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(sql);
 			
 			while(resultSet.next()) {
-				Sanatorium housing = new Sanatorium();
-				housing.setHousintId(resultSet.getInt("id"));
-				housing.setCorpsName(resultSet.getString("cname"));
-				housing.setNumber(resultSet.getInt("number"));
-				housing.setQuantity(resultSet.getInt("quantity"));
-				housing.setRecreation(resultSet.getString("recreation"));
-				housing.setProcedures(resultSet.getString("procedures"));
-				sanatorium.add(housing);
+				Product product = new Product();
+				product.setProId(resultSet.getInt("id"));
+                                product.setNumber(resultSet.getInt("number"));
+				product.setModel(resultSet.getString("model"));
+                                product.setProName(resultSet.getString("proName"));
+				product.setProTypeName(resultSet.getString("proTypeName"));
+                                
+				ls.add(product);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return sanatorium;
+		return ls;
 	}
 	
-	public List<Sanatorium> getStructure() {
-		List<Sanatorium> sanatorium = new ArrayList<Sanatorium>();
+	public List<Product> getStructure() {
+		List<Product> sanatorium = new ArrayList<Product>();
 		sql = "SELECT * FROM structure";
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(sql);
 			
 			while(resultSet.next()) {
-				Sanatorium structure = new Sanatorium();
-				structure.setStructureId(resultSet.getInt("id"));
-				structure.setCorpsName(resultSet.getString("cname"));
+				Product structure = new Product();
+				structure.setProTypeId(resultSet.getInt("id"));
+				structure.setProTypeName(resultSet.getString("proTypeName"));
 				sanatorium.add(structure);
 			}
 		} catch (SQLException e) {
@@ -66,59 +66,41 @@ public class SanatoriumDao {
 		return sanatorium;
 	}
 	
-	public Sanatorium getDescriptionByHousingId(int housingId) {
-		Sanatorium housing = new Sanatorium();
-		sql = "SELECT s.cname, h.number, h.quantity, h.recreation, h.procedures " +
-				"FROM housing h, structure s " +
+	public Product getDescriptionByHousingId(int proId) {
+		Product product = new Product();
+		sql = "SELECT h.id, s.proTypeName,h.proName, h.number, h.model, h.proRemark" +
+				" FROM housing h, structure s " +
 				"WHERE s.id = h.sid AND h.id = ?;";
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, housingId);
+			preparedStatement.setInt(1, proId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if(resultSet.next()) {
-				housing.setCorpsName(resultSet.getString("cname"));
-				housing.setNumber(resultSet.getInt("number"));
-				housing.setQuantity(resultSet.getInt("quantity"));
-				housing.setRecreation(resultSet.getString("recreation"));
-				housing.setProcedures(resultSet.getString("procedures"));
+                                
+				product.setProId(resultSet.getInt("id"));
+                                product.setNumber(resultSet.getInt("number"));
+				product.setModel(resultSet.getString("model"));
+                                product.setProName(resultSet.getString("proName"));
+				product.setProTypeName(resultSet.getString("proTypeName"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return housing;
+		return product;
 	}
 	
-	public Sanatorium getQuantityByNumber(int number) {
-		Sanatorium housing = new Sanatorium();
-		sql = "SELECT s.cname, h.number, h.quantity " +
-				"FROM housing h, structure s " +
-				"WHERE s.id = h.sid AND h.number = ?;";
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, number);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			if(resultSet.next()) {
-				housing.setCorpsName(resultSet.getString("cname"));
-				housing.setNumber(resultSet.getInt("number"));
-				housing.setQuantity(resultSet.getInt("quantity"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return housing;
-	}
 	
-	public int addCorps(Sanatorium structure) {
-		sql = "INSERT INTO structure (cname) " +
+	
+	public int addCorps(Product type) {
+		sql = "INSERT INTO structure (proTypeName) " +
 				"VALUES (?);";
 		int housingId = 0;
 		
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(
 					sql, PreparedStatement.RETURN_GENERATED_KEYS);
-			preparedStatement.setString(1, structure.getCorpsName());
+			preparedStatement.setString(1, type.getProTypeName());
 			preparedStatement.executeUpdate();
 
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -133,17 +115,18 @@ public class SanatoriumDao {
 		return housingId;
 	}
 	
-	public void addDiscription(Sanatorium housing) {
-		sql = "INSERT INTO housing (sid, number, quantity, recreation, procedures) " +
+	public void addDiscription(Product housing) {
+		sql = "INSERT INTO housing (sid, number, model, proName, proRemark) " +
 				"VALUES (?, ?, ?, ?, ?);";
 		try {
 			PreparedStatement preparedStatement = connection
 					.prepareStatement(sql);
-			preparedStatement.setInt(1, housing.getStructureId());
+			preparedStatement.setInt(1, housing.getProTypeId());
 			preparedStatement.setInt(2, housing.getNumber());
-			preparedStatement.setInt(3, housing.getQuantity());
-			preparedStatement.setString(4, housing.getRecreation());
-			preparedStatement.setString(5, housing.getProcedures());
+			preparedStatement.setString(3, housing.getModel());
+      
+			preparedStatement.setString(4, housing.getProName());
+			preparedStatement.setString(5, housing.getProRemark());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

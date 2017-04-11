@@ -38,10 +38,10 @@ public class UserSanatoriumController extends HttpServlet {
 				request.setAttribute("title", "这个是一个例子");
 				request.setAttribute("discription", sanatoriumDao.getDescriptionByHousingId(housingId));
 			} else if(action.equalsIgnoreCase("sn")) {
-				int number = Integer.parseInt(request.getParameter("number"));
-				request.setAttribute("content", "/details.jsp");
-				request.setAttribute("title", "这个是一个例子" + number);
-				request.setAttribute("discription", sanatoriumDao.getQuantityByNumber(number));
+//				int number = Integer.parseInt(request.getParameter("number"));
+//				request.setAttribute("content", "/details.jsp");
+//				request.setAttribute("title", "这个是一个例子" + number);
+//				request.setAttribute("discription", sanatoriumDao.getQuantityByNumber(number));
 			} else {}
 		}
 		

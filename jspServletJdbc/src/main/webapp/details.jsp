@@ -2,9 +2,9 @@
 	pageEncoding="utf-8"%>
 <%
 	String title = (String) request.getAttribute("title");
-Sanatorium housing = (Sanatorium) request.getAttribute("discription");
+Product housing = (Product) request.getAttribute("discription");
 %>
-<%@page import="com.zkbr.mystudy.jspservletjdbc.model.Sanatorium"%>
+<%@page import="com.zkbr.mystudy.jspservletjdbc.model.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <div class="row">
@@ -14,16 +14,19 @@ Sanatorium housing = (Sanatorium) request.getAttribute("discription");
 </div>
 <br />
 <dl class="dl-horizontal">
-	<dt>名称</dt>
-	<dd><%=housing.getCorpsName() %></dd>
-	<%if(housing.getQuantity()!=0) {%>
-	<dt>议席的数目</dt>
-	<dd><%=housing.getQuantity()%></dd>
-	<%} else if(housing.getRecreation() != null) {%>
-	<dt>娱乐设施</dt>
-	<dd><%=housing.getRecreation()%></dd>
-	<%} else if(housing.getProcedures() != null) {%>
-	<dt>程序</dt>
-	<dd><%=housing.getProcedures()%></dd>
-	<%} %>
+	<dt>类型</dt>
+	<dd><%=housing.getProTypeName()%></dd>
+	
+	<dt>数量</dt>
+	<dd><%=housing.getNumber()%></dd>
+	
+	<dt>型号</dt>
+	<dd><%=housing.getModel()%></dd>
+	
+	<dt>产品名称</dt>
+	<dd><%=housing.getProName()%></dd>
+        
+        <dt>备注</dt>
+	<dd><%=housing.getProRemark()%></dd>
+	
 </dl>

@@ -1,7 +1,7 @@
 package com.zkbr.mystudy.jspservletjdbc.controller;
 
 import com.zkbr.mystudy.jspservletjdbc.dao.SanatoriumDao;
-import com.zkbr.mystudy.jspservletjdbc.model.Sanatorium;
+import com.zkbr.mystudy.jspservletjdbc.model.Product;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -45,15 +45,15 @@ public class AdminSanatoriumController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		Sanatorium housing = new Sanatorium();
+		Product housing = new Product();
 		
 		String structureId = request.getParameter("sid");
 		if(structureId == null || structureId.isEmpty()) {
-			Sanatorium structure = new Sanatorium();
-			structure.setCorpsName(request.getParameter("cname"));
-			housing.setStructureId(sanatoriumDao.addCorps(structure));			
+			Product structure = new Product();
+			structure.setProTypeName(request.getParameter("cname"));
+			housing.setProTypeId(sanatoriumDao.addCorps(structure));			
 		} else {
-			housing.setStructureId(Integer.parseInt(structureId));
+			housing.setProTypeId(Integer.parseInt(structureId));
 		}
 		String number = request.getParameter("number");
 		if (number == null || number.isEmpty()) {
@@ -62,25 +62,25 @@ public class AdminSanatoriumController extends HttpServlet {
 			housing.setNumber(Integer.parseInt(number));
 		}
 		
-		String quantity = request.getParameter("quantity");
-		if (quantity == null || quantity.isEmpty()) {
-			housing.setQuantity(0);
+		String model = request.getParameter("model");
+		if (model == null || model.isEmpty()) {
+			housing.setModel("无");
 		} else {
-			housing.setQuantity(Integer.parseInt(quantity));
+			housing.setModel(model);
 		}
 				
-		String recreation = request.getParameter("recreation");
-		if(recreation == null || recreation.isEmpty()){
-			housing.setRecreation(null);
+		String proName = request.getParameter("proName");
+		if(proName == null || proName.isEmpty()){
+			housing.setProName("");
 		} else {
-			housing.setRecreation(recreation);
+			housing.setProName(proName);
 		}
 		
-		String procedures = request.getParameter("procedures");
-		if(procedures == null || procedures.isEmpty()) {
-			housing.setProcedures(null);
+		String proRemark = request.getParameter("proRemark");
+		if(proRemark == null || proRemark.isEmpty()) {
+			housing.setProRemark("");
 		} else {
-			housing.setProcedures(procedures);
+			housing.setProRemark(proRemark);
 		}
 		
 		sanatoriumDao.addDiscription(housing);		

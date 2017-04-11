@@ -75,7 +75,7 @@ body {padding-top: 60px;}
 								$("#selectHousingId").attr("disabled",
 										"disabled");
 								$(
-										'<div class="control-group"><label class="control-label" for="inputCorpsName">Имя корпуса</label>'
+										'<div class="control-group"><label class="control-label" for="inputCorpsName">新增类型</label>'
 												+ '<div class="controls"><input type="text" name="cname" id="inputCorpsName" placeholder="" class="required">'
 												+ '</div></div>')
 										.fadeIn('slow').appendTo('#newDiv');
