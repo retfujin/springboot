@@ -26,10 +26,10 @@ public class AccountEmailServiceTest {
     
     @Before
     public void startMailServer(){
-        greenMail = new GreenMail(ServerSetup.SMTP);
-        greenMail.setUser("retfu1@163.com", "dafucom33");
+        greenMail = new GreenMail(new ServerSetup(8081, null, "smtp"));
+        greenMail.setUser("retfu1@163.com", "123456");
         System.out.println(greenMail.getSmtp());
-     //   greenMail.start();
+        greenMail.start();
         
     }
     @Test

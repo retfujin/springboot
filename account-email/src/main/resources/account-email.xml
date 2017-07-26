@@ -17,7 +17,7 @@
                 <prop key="mail.host">${email.host}</prop>  
                 <prop key="mail.transport.protocol">${email.protocol}</prop>  
                 <prop key="mail.${email.protocol}.auth">${email.auth}</prop>  
-            <!--    <prop key="mail.${email.protocol}.socketFactory.class">${email.socketFactory}</prop>  -->
+               <!--<prop key="mail.${email.protocol}.socketFactory.class">${email.socketFactory}</prop>-->
                 <prop key="mail.${email.protocol}.port">${email.port}</prop>  
                 <prop key="mail.${email.protocol}.socketFactory.port">${email.port}</prop>  
                 <prop key="mail.${email.protocol}.timeout">${email.timeout}</prop>
