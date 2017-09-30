@@ -12,12 +12,24 @@ and open the template in the editor.
 
     <div class="container">
       <div class="starter-template">
-        <h1>Spring MVC / Thymeleaf / Bootstrap</h1>
+        <h1>Spring MVC / Thymeleaf / Bootstrap11</h1>
         <p class="lead" th:text="${greeting}">(greeting)</p>
+        <a th:if="${greeting=='Hello!'}" > eiled </a>
         <p>The local current time is <span th:text="${currentTime}">(time)</span></p>
       </div>
     </div>
-
+    <table class="">
+    <tr  th:each="collect,iterStat : ${collects}"> 
+        <th scope="row" th:text="${collect.id}">1</th>
+        <td >
+           <img th:src="${collect.webLogo}"/>
+        </td>
+        <td th:text="${collect.url}">Mark</td>
+        <td th:text="${collect.title}">Otto</td>
+        <td th:text="${collect.description}">@mdo</td>
+        <td th:text="${iterStat.index}">index</td>
+    </tr>
+    </table>
     <div th:include="layout :: footer" id="footer">(footer)11111</div>
 
   </body>
