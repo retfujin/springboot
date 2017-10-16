@@ -5,6 +5,7 @@
  */
 package com.acec.demo.controller;
 
+import com.acec.demo.domain.UserRepository;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ThymeleafController {
+    
+    @Autowired
+    UserRepository userRepository;
 
     @RequestMapping("/hi")
     public String hello(Locale locale, Model model) {
@@ -32,10 +37,12 @@ public class ThymeleafController {
         String formattedDate = dateFormat.format(date);
         model.addAttribute("currentTime", formattedDate);
 
+        userRepository.
+        
         List ls = new ArrayList();
         Map map = new HashMap();
-        map.put("id", "id1111");
-        map.put("webLogo", "Logo1111");
+        map.put("id", "id111111111111");
+        map.put("webLogo", null);
         map.put("url", "http://www.sina.com.cn1111");
         map.put("title", "标题1111");
         map.put("description", "这个一个备注1111");
@@ -43,7 +50,7 @@ public class ThymeleafController {
         
         Map map2 = new HashMap();
         map2.put("id", "id2222");
-        map2.put("webLogo", "Logo2222");
+        map2.put("webLogo", "/Logo2222");
         map2.put("url", "http://www.sina.com.cn2222");
         map2.put("title", "标题2222");
         map2.put("description", "这个一个备注2222");
